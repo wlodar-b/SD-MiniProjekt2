@@ -25,11 +25,11 @@ Wszystkie struktury są alokowane dynamicznie, a ich rozmiar jest modyfikowany p
 
 ## Metodologia Badań
 Pomiary czasu są przeprowadzane zgodnie z rygorystycznymi wytycznymi:
-**Jednostka:** Nanosekundy [ns].
-**Statystyka:** Każdy wynik jest średnią ze 150 pomiarów (5 różnych ziarn/seedów x 30 powtórzeń dla każdego ziarna).
-**Skalowalność:** Badania obejmują minimum 8 punktów pomiarowych, zaczynając od $n \ge 5000$ elementów.
-**Dane:** Priorytety są generowane losowo z zakresu kilkukrotnie większego niż wielkość struktury.
-**Izolacja:** Operacje `insert` i `extract-max` są mierzone na kopiach struktury, aby zachować stały rozmiar *n* podczas pomiaru.
+* **Jednostka:** Nanosekundy [ns].
+* **Statystyka:** Każdy wynik jest średnią ze 150 pomiarów (5 różnych ziarn/seedów x 30 powtórzeń dla każdego ziarna).
+* **Skalowalność:** Badania obejmują minimum 8 punktów pomiarowych, zaczynając od $n \ge 5000$ elementów.
+* **Dane:** Priorytety są generowane losowo z zakresu kilkukrotnie większego niż wielkość struktury.
+* **Izolacja:** Operacje `insert` i `extract-max` są mierzone na kopiach struktury, aby zachować stały rozmiar *n* podczas pomiaru.
 
 ---
 
