@@ -1,11 +1,11 @@
-#include ../include/Utils.hpp
+#include "../include/Utils.hpp"
 
 
 // Inicjalizacja generatora  i domyślnego rozkładu wartości
-RandomGenerator::RandomGenerator() {
-    : rng(SEEDS[0]) // Inicjalizacja generatora z pierwszym ziarnem
-      valueDist(std::numeric_limists<std::int32_t>::min(),
-                std::numeric_limists<std::int32_t>::max()) // Zakres dla wartości
+RandomGenerator::RandomGenerator()
+    : rng(SEEDS[0]),
+      valueDist(std::numeric_limits<std::int32_t>::min(),
+                std::numeric_limits<std::int32_t>::max())
 {}
 
 // Resetuje generator do konkretnego ziarna
@@ -22,7 +22,7 @@ std::int32_t RandomGenerator::generateValue() {
     return valueDist(rng); // Generowanie losowej wartości
 }
 
-int RandomGenerator::generatePriority() {
-    std::uniform_int_distribution<int> priorityDist(0, 5  n); // Zakres dla priorytetu
+int RandomGenerator::generatePriority(int n) {
+    std::uniform_int_distribution<int> priorityDist(0, 5 * n); // Zakres dla priorytetu
     return priorityDist(rng); // Generowanie losowego priorytetu
 }
