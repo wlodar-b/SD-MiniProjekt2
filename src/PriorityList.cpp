@@ -133,3 +133,14 @@ void PriorityList::clear() {
     head = tail = nullptr;
     size = 0;
 }
+
+// display - wyświetlanie zawartości listy
+void PriorityList::display() const {
+    Node* current = head;
+    std::cout << "Kolejka (P: Priorytet, V: Wartość)" << std::endl;
+    while (current) {
+        std::cout << "[P: " << current->data.priority << ", V:" << current->data.value << "] "; 
+        current = current->next;
+    }
+    std::cout << std::endl;
+}
