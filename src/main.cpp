@@ -4,7 +4,7 @@ int main() {
     Menu projectMenu;
     
     // Uruchomienie dwupoziomowego menu 
-    projectMenu.displayMainMenu(); 
+    projectMenu.DisplayMainMenu(); 
     
     return 0;
 }
