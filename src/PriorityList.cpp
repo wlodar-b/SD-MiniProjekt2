@@ -85,3 +85,51 @@ Element PriorityList::extractMax() {
     size--;
     return maxData;
 }
+
+// Podejrzenie elementy o najwyższym priorytecie 
+Element PriorityList::peek() {
+    if (!head) return Element(-1, -1);
+    return head->data;
+}
+
+// Zmiana priorytetu elementu o danej wartości
+void PriorityList::modifyKey(int val, int newPriority) {
+    Node* current = head;
+    while (current) {
+        if (current->data.value == val) {
+            // Usuwamy aktualny węzeł
+            Element updatedData = current->data;
+            updatedData.priority = newPriority;
+
+            // Logika wypięcia węzła
+            if (current->prev) current->prev->next = current->next;
+            else head = current->next; 
+
+            if (current->next) current->next->prev = current->prev;
+            else tail = current->prev;
+
+            delete current;
+            size--;
+
+            insert(updatedData); // Wstawiamy zaktualizowany element
+            return;
+        }
+        current = current->next;
+    }
+}
+
+// Zwrócenie rozmiaru struktury
+int PriorityList::getSize() const {
+    return size;
+}
+
+// Clear - czyszczenie struktury
+void PriorityList::clear() {
+    while (head) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+    }
+    head = tail = nullptr;
+    size = 0;
+}
