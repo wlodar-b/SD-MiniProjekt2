@@ -11,6 +11,10 @@ class MaxHeap {
         void heapifyDown(int index);
     public:
         MaxHeap(int c) : capacity(c) {}
-        void insert(Element el)
-        //reszta do dodania
+        void insert(Element el);
+        void peek() const;
+        void extractMax();
+        int getSize() const;
+        void clear();
+        void display() const;
 }
