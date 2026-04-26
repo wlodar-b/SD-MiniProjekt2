@@ -28,6 +28,8 @@ class TimeMeasurer {
                 // Start pomiaru czasu
                 auto start = std::chrono::high_resolution_clock::now();
 
+                operation(copies[i]);
+
                 // Koniec pomiaru czasu
                 auto end = std::chrono::high_resolution_clock::now();
 

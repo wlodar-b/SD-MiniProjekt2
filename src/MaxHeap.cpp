@@ -1,5 +1,9 @@
 #include "../include/MaxHeap.hpp"
 
+#include <iostream>
+#include <stdexcept>
+#include <utility>
+
 void MaxHeap::insert(Element el) {
     if (heap.size() >= capacity) { 
         throw std::runtime_error("Heap is full");
@@ -33,13 +37,13 @@ void MaxHeap::heapifyDown(int index) {
         heapifyDown(largest);
     }
 }
-void MaxHeap::peek() const {
+Element MaxHeap::peek() const {
     if (heap.empty()) {
         throw std::runtime_error("Heap is empty");
     }
     return heap[0];
 }
-void MaxHeap::extractMax() {
+Element MaxHeap::extractMax() {
     if (heap.empty()) {
         throw std::runtime_error("Heap is empty");
     }
@@ -48,6 +52,21 @@ void MaxHeap::extractMax() {
     heap.pop_back();
     heapifyDown(0);
     return max;
+}
+void MaxHeap::modifyKey(int value, int newPriority) { // zmienia PIERWSZY element o podanej wartości na nowy priorytet
+    for (int i = 0; i < static_cast<int>(heap.size()); ++i) {
+        if (heap[i].value == value) {
+            int oldPriority = heap[i].priority;
+            heap[i].priority = newPriority;
+
+            if (newPriority > oldPriority) {
+                heapifyUp(i);
+            } else {
+                heapifyDown(i);
+            }
+            return;
+        }
+    }
 }
 int MaxHeap::getSize() const {
     return heap.size();

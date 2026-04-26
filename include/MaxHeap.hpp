@@ -1,6 +1,8 @@
-#ifndef MAXHEAP_HPP4
-#define MAXHEAP_HPP4
+#ifndef MAXHEAP_HPP
+#define MAXHEAP_HPP
+
 #include <vector>
+
 #include "Element.hpp"
 
 class MaxHeap {
@@ -12,9 +14,12 @@ class MaxHeap {
     public:
         MaxHeap(int c) : capacity(c) {}
         void insert(Element el);
-        void peek() const;
-        void extractMax();
+        Element peek() const;
+        Element extractMax();
+        void modifyKey(int value, int newPriority);
         int getSize() const;
         void clear();
         void display() const;
-}
+};
+
+#endif // MAXHEAP_HPP

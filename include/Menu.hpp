@@ -19,6 +19,7 @@ class Menu {
 
 
     public:
+        Menu();
         void DisplayMainMenu(); // Metoda wyświetlająca główne menu
 };
 
