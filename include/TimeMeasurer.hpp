@@ -2,7 +2,6 @@
 #define TIMEMEASURER_HPP
 
 #include <chrono> // Biblioteka do pomiaru czasu
-#include <vector> // Biblioteka do przechowywania wyników pomiarów
 #include <functional> // Biblioteka do obsługi funkcji jako argumentów
 
 template <typename T>
@@ -16,19 +15,15 @@ class TimeMeasurer {
 
         // Metoda do pomiaru czasu wykonania operacji na strukturze danych
         long long measure(std::function<void(T&)> operation) {
-            std::vector<T> copies;
-            copies.reserve(count);
-            for (int i = 0; i < count; ++i) {
-                copies.push_back(original); // Tworzenie kopii oryginalnej struktury danych
-            }
-
             long long totalDuration = 0;
             
             for (int i = 0; i < count; ++i) {
+                T copy = original; // Kopia dla pojedynczego pomiaru, bez trzymania wszystkich naraz
+
                 // Start pomiaru czasu
                 auto start = std::chrono::high_resolution_clock::now();
 
-                operation(copies[i]);
+                operation(copy);
 
                 // Koniec pomiaru czasu
                 auto end = std::chrono::high_resolution_clock::now();
