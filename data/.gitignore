@@ -2,4 +2,5 @@
 *.txt
 *venv
 *wykresy
-projekt2.exe
+*projekt2.exe
+*.csv
