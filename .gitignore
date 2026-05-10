@@ -1,3 +1,8 @@
 wyniki.csv
 sd_miniprojekt2
 wykresy.py
+wykresy/wykres_extractMax.png
+wykresy/wykres_getSize.png
+wykresy/wykres_insert.png
+wykresy/wykres_modifyKey.png
+wykresy/wykres_peek.png
