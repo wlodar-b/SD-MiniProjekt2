@@ -1,5 +1,6 @@
 #include "../include/Menu.hpp"
 #include "../include/TimeMeasurer.hpp"
+#include "../include/FileManager.hpp"
 
 #include <iostream>
 #include <limits>
@@ -185,9 +186,13 @@ namespace {
         long long totalTime = measureOperation<Structure>(operation, rng, n, repeatCount, seedChoice, builder);
         long long measurementCount = static_cast<long long>(repeatCount) * seedCount;
 
+        long long avgTime = totalTime / measurementCount;
+
         std::cout << structureName << " | " << operationName(operation)
                   << " | suma: " << totalTime << " ns"
-                  << " | srednia: " << totalTime / measurementCount << " ns" << std::endl;
+                  << " | srednia: " << avgTime << " ns" << std::endl;
+
+        FileManager::saveToCSV("wyniki.csv", structureName, operationName(operation), n, avgTime);
     }
 
     template <typename Structure, typename Builder>
@@ -217,11 +222,16 @@ namespace {
                 );
                 int seedCount = seedChoice == ALL_SEEDS ? ALL_SEEDS : 1;
                 long long measurementCount = static_cast<long long>(repeatCount) * seedCount;
+                
+                // Dodane obliczenie i zapis do pliku dla opcji "All"
+                long long avgTime = totalTime / measurementCount;
 
                 totalForAll += totalTime;
                 std::cout << structureName << " | " << operationName(currentOperation)
                           << " | suma: " << totalTime << " ns"
-                          << " | srednia: " << totalTime / measurementCount << " ns" << std::endl;
+                          << " | srednia: " << avgTime << " ns" << std::endl;
+                          
+                FileManager::saveToCSV("wyniki.csv", structureName, operationName(currentOperation), n, avgTime);
             }
             std::cout << "Czas laczny wszystkich operacji: " << totalForAll << " ns" << std::endl;
         } else {

@@ -8,7 +8,7 @@ struct Element {
     int32_t value; // Wartość przechowywana w elemencie
 
     // Konstruktor z domyślnymi parametrami
-    Element(int p = 0, std::int32_t v = 0) : priority(p), value(v) {}
+    Element(int p = 0, int32_t v = 0) : priority(p), value(v) {}
 
     // Porównujemy elementy na podstawie ich priorytetu
     bool operator>(const Element& other) const { return priority > other.priority; }
